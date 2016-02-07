@@ -3,17 +3,31 @@
 
 ## Edit your lambda
 
-Suppose you already have lambda `YOUR_LAMBDA_NAME` in your account.
-Download the zipped lambda file, unzip and put the directory in the project root with the name `lambda-YOUR_LAMBDA_NAME`.
+Put your lambda code in `lambdas` directory. If you have `hello-world` lambda,
+it will be `lambdas/hello-world`.
 
-After you modify the code, upload it with the following command.
+After you modify your lambda, upload it with the following command.
 
 ```sh
-$ ./update-lambda-code.sh YOUR_LAMBDA_NAME [AWS_PROFILE_NAME]
+$ node --harmony_rest_parameter upload-lambda.js --function-name YOUR_LAMBDA_NAME
 ```
 
 ## Execution
 
 ```sh
 $ aws lambda invoke --function-name YOUR_LAMBDA_NAME [--payload PAYLOAD] [--profile AWS_PROFILE_NAME] /dev/stdout
+```
+
+## Settings
+
+`app.conf` should have the following values
+
+```json
+{
+  "aws.accessKeyId": "AWS ACCESS KEY ID",
+  "aws.secretAccessKey": "AWS SECRET ACCESS KEY",
+  "aws.region": "AWS REGION",
+
+  "lambda.execution.role": "arn:aws:iam::999999999999:role/LAMBDA_EXECUTION_ROLE_NAME"
+}
 ```
