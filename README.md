@@ -12,12 +12,6 @@ After you modify your lambda, upload it with the following command.
 $ node --harmony_rest_parameter upload-lambda.js --function-name YOUR_LAMBDA_NAME
 ```
 
-## Execution
-
-```sh
-$ aws lambda invoke --function-name YOUR_LAMBDA_NAME [--payload PAYLOAD] [--profile AWS_PROFILE_NAME] /dev/stdout
-```
-
 ## Settings
 
 `app.conf` should have the following values
@@ -30,4 +24,10 @@ $ aws lambda invoke --function-name YOUR_LAMBDA_NAME [--payload PAYLOAD] [--prof
 
   "lambda.execution.role": "arn:aws:iam::999999999999:role/LAMBDA_EXECUTION_ROLE_NAME"
 }
+```
+
+## Execution
+
+```sh
+$ aws lambda invoke --function-name YOUR_LAMBDA_NAME [--payload PAYLOAD] [--profile AWS_PROFILE_NAME] /dev/stdout
 ```
