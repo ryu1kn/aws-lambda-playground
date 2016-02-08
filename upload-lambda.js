@@ -28,11 +28,15 @@ if (!functionName) {
 
 zip.zip(getLambdaDirPath(functionName), getLambdaZipPath(functionName))
   .then(() => {
+    let functionConfig = new JsConfig({
+      fs,
+      loadPath: getLambdaConfigPath(functionName)
+    })
     let lambdaClient = new LambdaClient({
       lambda,
       functionName,
-      handler: 'index.handler', // TODO: Get this value from config
-      role: config.get('lambda.execution.role'),
+      handler: functionConfig.get('handler'),
+      role: functionConfig.get('execution_role'),
       zipFile: new Buffer(fs.readFileSync(getLambdaZipPath(functionName)), 'binary')
     });
     return lambdaClient.upload();
@@ -42,6 +46,10 @@ zip.zip(getLambdaDirPath(functionName), getLambdaZipPath(functionName))
   }, e => {
     console.error(e.stack);
   });
+
+function getLambdaConfigPath(functionName) {
+  return util.format('lambdas/%s.json', functionName);
+}
 
 function getLambdaDirPath(functionName) {
   return 'lambdas/' + functionName;

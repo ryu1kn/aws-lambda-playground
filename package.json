@@ -1,7 +1,7 @@
 {
   "name": "aws-lambda-playground",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lambda uploader",
   "main": "index.js",
   "scripts": {
     "start": "node --harmony_default_parameters --harmony_rest_parameters index.js",
