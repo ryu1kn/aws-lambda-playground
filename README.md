@@ -3,16 +3,18 @@
 
 It's actually AWS lambda function uploader with one sample lambda. Not the playground of lambda itself...
 
-## Edit your lambda
+Put your lambdas in one directory (e.g. `my_lambdas`). Here `lambda_N` must be your lambda names.
 
-Put your lambda code and the config for it in `lambdas` directory.
+```
+* my_lambdas/
+    * lambda_1/
+        * code/ (contents of `code` directory will be zipped)
+        * config.json
+    * lambda_2/
+        * ...
+```
 
-If you have `hello-world` lambda, you should have:
-
-* `lambdas/hello-world`: Your lambda code
-* `lambdas/hello-world.json`: Configuration for your lambda
-
-Your lambda config should have the following content:
+Each `config.json` should have following values:
 
 ```json
 {
@@ -21,10 +23,10 @@ Your lambda config should have the following content:
 }
 ```
 
-When your lambda is ready, upload it with the following command.
+If you want to upload your `lambda_1`, execute the following command:
 
 ```sh
-$ node --harmony_rest_parameter upload-lambda.js --function-name YOUR_LAMBDA_NAME
+$ node --harmony_rest_parameters upload-lambda.js --function-name YOUR_LAMBDA_NAME
 ```
 
 ## Settings
@@ -35,7 +37,9 @@ $ node --harmony_rest_parameter upload-lambda.js --function-name YOUR_LAMBDA_NAM
 {
   "aws.accessKeyId": "AWS ACCESS KEY ID",
   "aws.secretAccessKey": "AWS SECRET ACCESS KEY",
-  "aws.region": "AWS REGION"
+  "aws.region": "AWS REGION",
+
+  "lambda.directory.path": "path/to/lambda_dir"   // e.g. my_lambdas
 }
 ```
 
