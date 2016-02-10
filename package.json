@@ -1,5 +1,5 @@
 {
-  "name": "aws-lambda-playground",
+  "name": "lambda-uploader",
   "version": "1.0.0",
   "description": "Lambda uploader",
   "main": "index.js",
