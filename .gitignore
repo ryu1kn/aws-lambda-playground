@@ -3,5 +3,4 @@
 
 /node_modules
 /tmp/*.zip
-/app.conf
-/lambdas
+/config

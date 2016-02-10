@@ -8,9 +8,17 @@ let archiver = require('archiver');
 let fs = require('fs');
 let path = require('path');
 
+let argv = require('minimist')(process.argv.slice(2));
+let MANDATORY_ARGS = ['config', 'function-name'];
+MANDATORY_ARGS.forEach(function (argName) {
+  if (typeof argv[argName] === 'undefined') {
+    throw new Error(`\"--${argName}\" must be specified`);
+  }
+});
+
 let config = new JsConfig({
   fs,
-  loadPath: 'app.conf'
+  loadPath: argv['config']
 });
 let lambda = new AWS.Lambda({
   accessKeyId: config.get('aws.accessKeyId'),
@@ -19,13 +27,8 @@ let lambda = new AWS.Lambda({
 });
 let zip = new Zip({archiver, fs});
 
-let argv = require('minimist')(process.argv.slice(2));
 let basePath = config.get('lambda.directory.path');
 let functionName = argv['function-name'];
-if (!functionName) {
-  // XXX: Check it ealier stage
-  throw new Error('`--function-name` must be specified');
-}
 
 zip.zip(getLambdaDirPath(basePath, functionName), getLambdaZipPath(functionName))
   .then(() => {

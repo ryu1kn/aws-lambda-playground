@@ -1,5 +1,5 @@
 
-# aws-lambda-playground
+# Lambda Uploader
 
 It's actually AWS lambda function uploader with one sample lambda. Not the playground of lambda itself...
 
@@ -26,12 +26,10 @@ Each `config.json` should have following values:
 If you want to upload your `lambda_1`, execute the following command:
 
 ```sh
-$ node --harmony_rest_parameters upload-lambda.js --function-name YOUR_LAMBDA_NAME
+$ node --harmony_rest_parameters upload-lambda.js --function-name YOUR_LAMBDA_NAME --config CONFIG_PATH
 ```
 
-## Settings
-
-`app.conf` should have the following values
+Here, CONFIG_PATH is the path to a file containing the following information:
 
 ```json
 {
