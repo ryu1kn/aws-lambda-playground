@@ -56,7 +56,7 @@ function getLambdaConfigPath(basePath, functionName) {
 }
 
 function getLambdaDirPath(basePath, functionName) {
-  return path.join(basePath, functionName, 'code');
+  return path.join(basePath, functionName, 'dest');
 }
 
 function getLambdaZipPath(functionName) {

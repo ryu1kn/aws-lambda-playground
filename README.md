@@ -8,7 +8,7 @@ Put your lambdas in one directory (e.g. `my_lambdas`). Here `lambda_N` must be y
 ```
 * my_lambdas/
     * lambda_1/
-        * code/ (contents of `code` directory will be zipped)
+        * dest/ (contents of `dest` directory will be zipped)
         * config.json
     * lambda_2/
         * ...
