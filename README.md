@@ -37,7 +37,7 @@ Here, CONFIG_PATH is the path to a file containing the following information:
   "aws.secretAccessKey": "AWS SECRET ACCESS KEY",
   "aws.region": "AWS REGION",
 
-  "lambda.directory.path": "path/to/lambda_dir"   // e.g. my_lambdas
+  "lambda.directory.path": "path/to/lambda_dir"
 }
 ```
 
